@@ -1,0 +1,68 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tasks</title>
+    <meta name="description" content="The HTML5 Herald">
+    <meta name="author" content="SitePoint">
+    <style>
+        body {
+            padding: 30px;
+        }
+
+        * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+    </style>
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="columns">
+            <div class="column col-9">
+                <h1>Tasks</h1>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Task</th>
+                        <th><a href="/tasks?filter=username">Username</a></th>
+                        <th><a href="/tasks?filter=email">Email</a></th>
+                        <th><a href="/tasks?filter=status">Status</a></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for task in currentPageTasks %}
+                        <tr class="active">
+                            <td>{{ task.id }}</td>
+                            <td>{{ task.text }}</td>
+                            <td>{{ task.username }}</td>
+                            <td>{{ task.email }}</td>
+                            <td>{{ task.status ? 'active' : 'work-in' }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="column col-3">
+                <h1>New task</h1>
+                <form class="form-group" method="post" action="/tasks">
+                    <label class="form-label" for="input-1">Username</label>
+                    <input class="form-input" type="text" id="input-1" name="username" placeholder="Username">
+
+                    <label class="form-label" for="input-2">E-mail</label>
+                    <input class="form-input" type="email" id="input-2" name="email" placeholder="E-mail">
+
+                    <label class="form-label" for="input-3">Text</label>
+                    <textarea class="form-input" id="input-3" name="text" placeholder="Textarea" rows="3"></textarea>
+                    <br>
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+    "name": "foll/todo-test",
+    "description": "Simple todo list",
+    "type": "project",
+    "authors": [
+        {
+            "name": "foll",
+            "email": "folleah5@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=7.1",
+        "ext-json": "*",
+        "twig/twig": "^2.0",
+        "nikic/fast-route": "^1.3"
+    }
+}
